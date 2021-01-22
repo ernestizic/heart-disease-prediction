@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Doctor's page</title>
+        <!-- Bootstrap core CSS -->
+        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
+        <!-- jQuery (necessary for the use of jQuery) -->
+        <script src="/static/bootstrap/js/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+
+        <div class="container-fluid" id="result">
+
+            <div class="container-fluid result-header">
+                <h3><b>Heart Test Report</b></h3>
+            </div>
+
+            <div class="container-fluid" id="result-body">
+                <h6>PATIENT ID:  <span style="font-family: courier;">{{ result.patient.pk }}</span></h6>
+                <h6>PATIENT NAME:  <span style="font-family: courier;">{{ result.patient.name }}</span></h6>
+                <h6>GENDER:  <span style="font-family: courier;">{{ result.patient.sex }}</span></h6>
+                <h6>AGE:  <span style="font-family: courier;">{{ result.patient.age }}</span></h6>
+                <h6>PHONE NO: <span style="font-family: courier;">{{ result.patient.phone }}</span></h6>
+
+                <hr>
+                <h5><b>Prediction Result</b></h5>
+
+                <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Condition</th>
+                        <th>Result</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Chest pain type (4 values)</td>
+                        <td>{{result.chest_pain_type}}</td>
+                      </tr>
+                      <tr>
+                        <td>Resting blood pressure</td>
+                        <td>{{result.blood_pressure}}</td>
+                      </tr>
+                      <tr>
+                        <td>Serum cholesterol (mg/dl) </td>
+                        <td>{{result.cholestoral_in_mg}}</td>
+                      </tr>
+                      <tr>
+                        <td>Fasting blood sugar > 120(mg/dl) </td>
+                        <td>{{result.fasting_blood_sugar}}</td>
+                      </tr>
+                      <tr>
+                        <td>Resting electrocardiographic results (values 0,1,2)</td>
+                        <td>{{result.electrocardiographic_result}}</td>
+                      </tr>
+                      <tr>
+                        <td>Maximum heart rate achieved</td>
+                        <td>{{result.maximum_heart_rate_achieved}}</td>
+                      </tr>
+                    </tbody>
+                </table>
+
+                <h5><b>Result Interpretation</b></h5>
+
+                <p>Heart disease result is: {{ result.result }} {{ val }}</p>
+                <hr>
+                <hr>
+                <hr>
+        </div>
+
+
+    </body>
+</html>
+

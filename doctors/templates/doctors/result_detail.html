@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+                <h6>PATIENT ID:  <span style="font-family: courier;">{{ patient.pk }}</span></h6>
+                <h6>PATIENT NAME:  <span style="font-family: courier;">{{ patient.name }}</span></h6>
+                <h6>GENDER:  <span style="font-family: courier;">{{ patient.sex }}</span></h6>
+                <h6>AGE:  <span style="font-family: courier;">{{ patient.age }}</span></h6>
+                <h6>PHONE NO: <span style="font-family: courier;">{{ patient.phone }}</span></h6>
+                <hr>
+                <h2>Result: {{val}}</h2>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Doctor's page</title>
+        <!-- Bootstrap core CSS -->
+        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
+        <!-- jQuery (necessary for the use of jQuery) -->
+        <script src="/static/bootstrap/js/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                LOGO
+            </a>
+
+          <form class="form-inline ml-auto" action="{% url 'doctors:all-patients' %}">
+                <input class="form-control" type="search" placeholder="Patient Search" aria-label="Search" name="q" id="search-input">
+                <button class="btn btn-outline-success" type="submit" id="search-btn"><i class="fa fa-search"></i></button>
+          </form>
+        </nav>
+
+        <div id="wrapper">
+            <div id="sidebar">
+                <h3 style="padding-left: 20px; color: grey;">Dashboard</h3>
+                <ul class="sidebar-nav">
+                    <!--<li><a href="{% url 'doctors:doctor_page' %}">Account</a></li>-->
+                    <li><a href="{% url 'doctors:add-patient' %}">Add Patient</a></li>
+                    <li><a href="{% url 'doctors:all-patients' %}" style="background: #00AEEF;">View Patients</a></li>
+                    <li>
+                        <form action="{% url 'accounts:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-block" title="logout" style="text-align:left; padding-left:20px; color:#fff;">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- page content -->
+            <div id="page-content">
+                {% include 'alerts.html' %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <h6>PATIENT ID:  <span style="font-family: courier;">{{ patient.pk }}</span></h6>
+                            <h6>PATIENT NAME:  <span style="font-family: courier;">{{ patient.name }}</span></h6>
+                            <h6>GENDER:  <span style="font-family: courier;">{{ patient.sex }}</span></h6>
+                            <h6>AGE:  <span style="font-family: courier;">{{ patient.age }}</span></h6>
+                            <h6>PHONE NO: <span style="font-family: courier;">{{ patient.phone }}</span></h6>
+                            <a class="btn btn-dark" href="{% url 'doctors:prediction_result' patient.id %}">Check Result</a>
+
+                        </div>
+                        <div class="col-lg-9">
+                            <form method="post" id="symptom-form">
+                                {% csrf_token %}
+                                {{symptom_form.patient|as_crispy_field }}
+                                <div class="row">
+                                    <div class="col-6">
+                                        {{symptom_form.age|as_crispy_field }}
+                                    </div>
+                                    <div class="col-6">
+                                        {{symptom_form.chest_pain_type|as_crispy_field }}
+                                    </div>
+                                    <div class="col-6">
+                                        {{symptom_form.blood_pressure|as_crispy_field }}
+                                    </div>
+                                    <div class="col-6">
+                                        {{symptom_form.cholestoral_in_mg|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                {{symptom_form.electrocardiographic_result|as_crispy_field }}
+                                {{symptom_form.maximum_heart_rate_achieved|as_crispy_field }}
+                                {{symptom_form.fasting_blood_sugar|as_crispy_field }}
+
+                                <input type="submit" value="Submit" class="btn btn-primary btn-block">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </body>
+
+
+
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $(".alert").slideUp("3000");
+            });
+        </script>
+
+
+</html>

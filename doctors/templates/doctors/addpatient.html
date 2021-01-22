@@ -1,0 +1,76 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Doctor's page</title>
+        <!-- Bootstrap core CSS -->
+        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
+        <!-- jQuery (necessary for the use of jQuery) -->
+        <script src="/static/bootstrap/js/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                LOGO
+            </a>
+
+          <form class="form-inline ml-auto" action="{% url 'doctors:all-patients' %}">
+            <input class="form-control" type="search" placeholder="Patient Search" aria-label="Search" name="q" id="search-input">
+            <button class="btn btn-outline-success" type="submit" id="search-btn"><i class="fa fa-search"></i></button>
+          </form>
+        </nav>
+
+
+<div id="wrapper">
+    <div id="sidebar">
+        <h3 style="padding-left: 20px; color: grey;">Dashboard</h3>
+        <ul class="sidebar-nav">
+            <!--<li><a href="{% url 'doctors:doctor_page' %}">Account</a></li>-->
+            <li><a href="{% url 'doctors:add-patient' %}" style="background: #00AEEF;">Add Patient</a></li>
+            <li><a href="{% url 'doctors:all-patients' %}">View Patients</a></li>
+            <li>
+                <form action="{% url 'accounts:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-block" title="logout" style="text-align:left; padding-left:20px; color:#fff;">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <!-- page content -->
+    <div id="page-content">
+        {% include 'alerts.html' %}
+        <!--Add a patient -->
+        <div class="container">
+            <form method="post" id="patient-creation-form">
+                <div class="form-head">
+                    <h6 style="color:white;">Patient Registration</h6>
+			    </div>
+                {% csrf_token %}
+                {{ patient_form|crispy }}
+                <input type="submit" value="Submit" class="btn btn-primary btn-block">
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $(".alert").fadeOut(3000);
+            });
+        </script>
+
+    </body>
+</html>

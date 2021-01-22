@@ -1,0 +1,41 @@
+{% extends 'base_template.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container-fluid" style="background-color:cornflowerblue; padding-bottom:2px;">
+    <h5>WELCOME, This is the Doctor's page</h5>
+</div>
+
+<div id="wrapper">
+    <div id="sidebar">
+        <h3 style="padding-left: 20px; color: grey;">Dashboard</h3>
+        <ul class="sidebar-nav">
+            <!--<li><a href="{% url 'doctors:doctor_page' %}">Account</a></li>-->
+            <li><a href="{% url 'doctors:add-patient' %}">Add Patient</a></li>
+            <li><a href="{% url 'doctors:all-patients' %}" style="background: #16A085;">View Patients</a></li>
+            <li><a href="{% url 'doctors:heart-prediction' %}" style="background: #16A085;">Patients Results</a></li>
+            <li><a href="#">Log out</a></li>
+        </ul>
+    </div>
+
+    <!-- page content -->
+    <div id="page-content">
+
+        <div class="container">
+            <form method="post" id="symptom-form">
+                {% csrf_token %}
+                {{ symptom_form|crispy }}
+                <input type="submit" value="Submit" class="btn btn-success btn-block">
+            </form>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+
+
+
+

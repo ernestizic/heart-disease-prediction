@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Doctor's page</title>
+        <!-- Bootstrap core CSS -->
+        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
+        <!-- jQuery (necessary for the use of jQuery) -->
+        <script src="/static/bootstrap/js/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                LOGO
+            </a>
+
+            <form class="form-inline ml-auto" action="{% url 'doctors:all-patients' %}">
+                <input class="form-control" type="search" placeholder="Patient Search" aria-label="Search" name="q" id="search-input">
+                <button class="btn btn-outline-success" type="submit" id="search-btn"><i class="fa fa-search"></i></button>
+            </form>
+        </nav>
+<div id="wrapper">
+    <div id="sidebar">
+        <h3 style="padding-left: 20px; color: grey;">Dashboard</h3>
+        <ul class="sidebar-nav">
+            <!--<li><a href="{% url 'doctors:doctor_page' %}">Account</a></li>-->
+            <li><a href="{% url 'doctors:add-patient' %}">Add Patient</a></li>
+            <li><a href="{% url 'doctors:all-patients' %}" style="background: #00AEEF;">View Patients</a></li>
+            <li>
+                <form action="{% url 'accounts:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-block" title="logout" style="text-align:left; padding-left:20px; color:#fff;">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <!-- page content -->
+    <div id="page-content">
+
+        <!--All patients-->
+        <div class="container-fluid">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>PATIENT NAME</th>
+                        <th>PHONE NUMBER</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for patient in patients %}
+                    <tr>
+                        <td>{{ patient.id }}</td>
+                        <td><a href="{{patient.get_absolute_url}}">{{patient.name}}</a></td>
+                        <td>{{ patient.phone }}</td>
+                    </tr>
+                    {% empty %}
+                    <div class="container-fluid">
+                        <h3>No patient found containing search criteria {{request.GET.q}}</h3>
+                    </div>
+
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <!--pagination-->
+            {% if patients.has_other_pages %}
+                <ul class="pagination">
+                    {% if patients.has_previous %}
+                        <li><a class="page-link" href="?page={{patients.previous_page_number}}">&laquo;</a></li>
+                    {% else %}
+                        <li class="page-link disabled"><span style="color:red;">&laquo;</span></li>
+                    {% endif %}
+
+                    {% for i in patients.paginator.page_range %}
+                        {% if patients.number == i %}
+                            <li class="page-link active"><span style="color:red;"> {{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                            <li><a class="page-link" href="?page={{ i }}"> {{ i }} </a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if patients.has_next %}
+                        <li><a class="page-link" href="?page={{ patients.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="page-link disabled"><span style="color:red;">&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+    </body>
+</html>

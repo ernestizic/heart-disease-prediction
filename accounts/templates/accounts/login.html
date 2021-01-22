@@ -1,0 +1,37 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Staff - Login</title>
+        <!-- Bootstrap core CSS -->
+        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
+        <!-- jQuery (necessary for the use of jQuery) -->
+        <script src="/static/bootstrap/js/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <form class="login-form-content" action="{% url 'accounts:login' %}" method="post">
+                <div class="login-logo">
+                    <h5>Log in </h5>
+                </div>
+                {% csrf_token %}
+                {{form|crispy}}
+                <!--This is used during redirect after login when you want to access a page that cant be accessed without logging in-->
+                {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+                {% endif %}
+                <!--end here-->
+                <input type="submit" value="Login" class="btn btn-block">
+            </form>
+        </div>
+
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    </body>
+</html>

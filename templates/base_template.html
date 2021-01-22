@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Doctor's page</title>
+        <!-- Bootstrap core CSS -->
+        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
+        <!-- jQuery (necessary for the use of jQuery) -->
+        <script src="/static/bootstrap/js/jquery.min.js"></script>
+    </head>
+
+    <body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+
+            <a class="navbar-brand" href="{% url 'home' %}">
+                LOGO
+            </a>
+
+            <!-- Links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'doctors:add-patient' %}">APPLICATION</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">SERVICES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact-div">CONTACT</a>
+                </li>
+            </ul>
+        </nav>
+
+        {% block content %}
+
+        {% endblock %}
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Copyright &copy; 2020 All rights reserved | Designed and developed by Ernestizic </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul>
+                            <li><a href="#">Advertise</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+
+
+
+        <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $(".alert").fadeOut(3000);
+            });
+        </script>
+
+    </body>
+</html>
