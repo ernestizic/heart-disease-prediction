@@ -177,16 +177,16 @@ footer{
 	padding-bottom:100px;
 }
 #result{
-    border:1px solid black;
+    border:1px solid grey;
     width:60%;
-    background-color:#33CCCC;
+    background-color:#f0f0f0;
     color:black;
 }
 .result-header{
     padding:30px;
 }
 #result-body{
-    background-color:grey;
+    background-color:#fff;
     width:90%;
     padding:20px;
     margin-bottom:20px;
