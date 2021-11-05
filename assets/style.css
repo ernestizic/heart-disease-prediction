@@ -1,196 +1,208 @@
-body{
-    background-color:#f5f5f5;
-    color:#708090;
-    font-family:calibri;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#main-nav {
+  padding: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+body {
+  background-color: #f5f5f5;
+  color: #708090;
+  font-family: calibri;
 }
 
-#sidebar{
-    z-index: 1;
-    position: fixed;
-    width: 250px;
-    height:100%;
-    overflow-y: hidden;
-    background-color: #2c3e50;
-    border:;
-    opacity: 0.9;
-    padding-top:15px;
+#sidebar {
+  z-index: 1;
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  overflow-y: hidden;
+  background-color: #2c3e50;
+  /* border: ; */
+  opacity: 0.9;
+  padding-top: 15px;
 }
 
-#page-content{
-    width: 100%;
-    position: absolute;
-    border:;
-    padding-left:250px;
-    padding-top:20px;
+#page-content {
+  width: 100%;
+  position: absolute;
+  /* border: ; */
+  padding-left: 250px;
+  padding-top: 20px;
 }
 
-.sidebar-nav{
-    padding: 0;
-    list-style-type: none;
+.sidebar-nav {
+  padding: 0;
+  list-style-type: none;
 }
-.sidebar-nav li{
-    text-indent: 20px;
-    line-height: 40px;
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
 }
-.sidebar-nav li a{
-    display: block;
-    text-decoration: none;
-    color: #ddd;
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #ddd;
 }
-.sidebar-nav li a:hover{
-    background: #00AEEF;
-}
-
-#patient-creation-form{
-    width:40%;
-	border:1px solid #778899;
-	background-color: #fff;
-    padding:35px;
-    margin-left:25%;
+.sidebar-nav li a:hover {
+  background: #00aeef;
 }
 
-.form-head{
-	margin-bottom: 20px;
-	background-color:grey;
-	padding:10px;
-	text-align: center;
+#patient-creation-form {
+  width: 40%;
+  border: 1px solid #778899;
+  background-color: #fff;
+  padding: 35px;
+  margin-left: 25%;
 }
 
-#search-input{
-    border-radius:0;
-    border:1px solid #fff;
-}
-#search-btn{
-    border-radius:0;
-    background-color:#fff;
-    color:grey;
-    border:1px solid #fff;
+.form-head {
+  margin-bottom: 20px;
+  background-color: grey;
+  padding: 10px;
+  text-align: center;
 }
 
-#symptom-form{
-    width:50%;
-	border:1px solid #778899;
-    background-color: #2c3e50;
-	color:#fff;
-    padding:35px;
-    margin-left:25%;
+#search-input {
+  border-radius: 0;
+  border: 1px solid #fff;
+}
+#search-btn {
+  border-radius: 0;
+  background-color: #fff;
+  color: grey;
+  border: 1px solid #fff;
 }
 
-.login-form-content{
-	width:40%;
-	border:1px solid #778899;
-	background-color: #fff;
-	border-radius:10px;
-	position:absolute;
-	top:20%;
-	left:30%;
-	padding:35px;
-}
-.login-form-content .btn{
-	background-color: #b0c4de;
+#symptom-form {
+  width: 50%;
+  border: 1px solid #778899;
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 35px;
+  margin-left: 25%;
 }
 
-.index-banner{
-    background-image: linear-gradient(
-        rgba(0, 0, 0, 0.6),
-        rgba(0, 0, 0, 0.6)
-    ),
+.login-form-content {
+  width: 40%;
+  border: 1px solid #778899;
+  background-color: #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  padding: 35px;
+}
+.login-form-content .btn {
+  background-color: #b0c4de;
+}
+
+.index-banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(/static/images/25.jpg);
-    height:100%;
-    background-attachment: fixed;
-    margin-top:56px;
-
+  height: 100%;
+  background-attachment: fixed;
+  margin-top: 56px;
 }
-.banner-content{
-    color:white;
-    text-align:center;
-    padding:80px;
+.banner-content {
+  color: white;
+  text-align: center;
+  padding: 80px;
 }
-.banner-content h1{
-    font-size:3.3em;
+.banner-content h1 {
+  font-size: 3.3em;
 }
-.banner-content p{
-    font-size:30px;
-    margin:30px;
-    padding:3px;
-    background-color:#00AEEF;
-}
-
-.banner-content ul{
-    list-style-type:none;
-    padding:0;
-}
-.banner-content ul li{
-    display:inline;
-    padding:5px;
-}
-.banner-content .btn{
-    padding:12px 20px;
-    border-radius:0;
-    background-color:inherit;
-    border:2px solid #00AEEF;
-    color:#00AEEF;
-    font-weight:bold;
-}
-#gs{
-    background-color:#00AEEF;
-    color:#fff;
-}
-#gs:hover{
-    background-color:inherit;
-    color: #00AEEF;
-}
-#about{
-    padding-top:100px;
-    padding-bottom:100px;
-}
-#about h1{
-    margin-top:50px;
-    margin-bottom:20px;
-    padding-bottom:10px;
+.banner-content p {
+  font-size: 30px;
+  margin: 30px;
+  padding: 3px;
+  background-color: #00aeef;
 }
 
-footer{
-	background-color: black;
-	padding: 10px;
-	color: white;
+.banner-content ul {
+  list-style-type: none;
+  padding: 0;
 }
-.footer ul{
-	list-style-type: none;
+.banner-content ul li {
+  display: inline;
+  padding: 5px;
 }
-.footer li{
-	float: right;
-	padding-left: 20px;
+.banner-content .btn {
+  padding: 12px 20px;
+  border-radius: 0;
+  background-color: inherit;
+  border: 2px solid #00aeef;
+  color: #00aeef;
+  font-weight: bold;
 }
-.footer li a{
-	display:block;
-	color: white;
+#gs {
+  background-color: #00aeef;
+  color: #fff;
 }
-
-#wrapper{
-    margin-top:54px;
+#gs:hover {
+  background-color: inherit;
+  color: #00aeef;
 }
-
-#contact-div{
-	background-color: grey;
-	padding-top:100px;
-	padding-bottom:100px;
+#about {
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
-#result{
-    border:1px solid grey;
-    width:60%;
-    background-color:#f0f0f0;
-    color:black;
-}
-.result-header{
-    padding:30px;
-}
-#result-body{
-    background-color:#fff;
-    width:90%;
-    padding:20px;
-    margin-bottom:20px;
+#about h1 {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 
+footer {
+  background-color: black;
+  padding: 10px;
+  color: white;
+}
+.footer ul {
+  list-style-type: none;
+}
+.footer li {
+  float: right;
+  padding-left: 20px;
+}
+.footer li a {
+  display: block;
+  color: white;
+}
 
+#wrapper {
+  margin-top: 54px;
+}
+
+#contact-div {
+  background-color: grey;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+#contact-div button{
+  width: 100%;
+}
+.form-group{
+  margin: 10px 0;
+}
+
+
+#result {
+  border: 1px solid grey;
+  width: 60%;
+  background-color: #f0f0f0;
+  color: black;
+}
+.result-header {
+  padding: 30px;
+}
+#result-body {
+  background-color: #fff;
+  width: 90%;
+  padding: 20px;
+  margin-bottom: 20px;
+}

@@ -16,7 +16,10 @@
     <body>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
             <a class="navbar-brand" href="{% url 'home' %}">
-                LOGO
+                Multi-Cardio Expert System
+                {% if user.is_authenticated %}
+                    <small style="color: grey">You are logged in as: {{user}} </small>
+                {% endif %}
             </a>
 
           <form class="form-inline ml-auto" action="{% url 'doctors:all-patients' %}">
