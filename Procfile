@@ -1,0 +1,1 @@
+web: gunicorn predictionsys.wsgi --log-file -
